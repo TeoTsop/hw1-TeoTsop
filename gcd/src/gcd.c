@@ -34,6 +34,6 @@ int main (int argc, char **argv) {
    return 1;
   }
 
-  printf("%lld\n", gcd(a, b));
+  printf("gcd(%lld, %lld) = %lld\n", a, b, gcd(a, b));
   return 0;
 }
