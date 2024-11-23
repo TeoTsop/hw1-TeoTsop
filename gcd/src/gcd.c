@@ -1,9 +1,26 @@
+//To compile use: "gcc -O3 -Wall -Wextra -Werror -pedantic -o gcd gcd.c"
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (int argc, char **argv) {
+long long int gcd (long long int a, long long int b) {
 
   long long int c;
+
+  if (a % b == 0) {
+   if (b < 0){
+    b = -b;
+   }
+   return b;
+  }
+  else {
+   c = a % b;
+   a = b;
+   b = c;
+   return gcd(a, b);
+  }
+}
+
+int main (int argc, char **argv) {
 
   if (argc != 3) {
    printf ("Usage: ./gcd <num1> <num2>\n");
@@ -17,19 +34,6 @@ int main (int argc, char **argv) {
    return 1;
   }
 
-  while (1) {
-   if (a % b == 0) {
-    if (b < 0){
-     b = -b;
-    }
-    printf ("%lld\n", b);
-    return 0;
-   }
-   else {
-    c = a % b;
-    a = b;
-    b = c;
-   }
-  }
- return 0;
+  printf("%lld\n", gcd(a, b));
+  return 0;
 }
